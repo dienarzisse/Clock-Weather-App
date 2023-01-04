@@ -26,12 +26,12 @@ function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTim
             setAuthor(quoteData.data.author);
             setQuote(quoteData.data.content);
 
-            // location
-            const locationData = await axios.get("http://ip-api.com/json/");
-            const city = locationData.data.city;
-            const country = locationData.data.country;
-            setCity(city);
-            setCountry(country);
+            // // location
+            // const locationData = await axios.get("http://ip-api.com/json/");
+            // const city = locationData.data.city;
+            // const country = locationData.data.country;
+            // setCity(city);
+            // setCountry(country);
 
             // current weather
             const weatherData = await getFormattedWeatherData({q: `${city}`, units: "metric"});
