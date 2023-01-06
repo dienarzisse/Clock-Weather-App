@@ -43,8 +43,8 @@ function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTim
             // })
 
             // current weather
-            const weatherData = await getFormattedWeatherData({q: `${city}`, units: "metric"});
-            setCurrentWeather(weatherData);
+            // const weatherData = await getFormattedWeatherData({q: `${city}`, units: "metric"});
+            // setCurrentWeather(weatherData);
         }
 
         fetchData();
