@@ -39,7 +39,7 @@
   align-items: flex-start;
   text-transform: uppercase;
 }
-.bottom-section .weather-day-time {
+.bottom-section .wrapper-day-time {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -47,12 +47,12 @@
   margin-bottom: 1rem;
   font-size: 15px;
 }
-.bottom-section .weather-day-time .day-time {
+.bottom-section .wrapper-day-time .day-time {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.bottom-section .weather-day-time span {
+.bottom-section .wrapper-day-time span {
   margin-left: 1rem;
 }
 .bottom-section .time-data {

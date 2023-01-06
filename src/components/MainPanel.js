@@ -7,16 +7,14 @@ import "./css/MainPanel.css";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import getFormattedWeatherData from '../services/weatherService';
 
 
 function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTime, theme }){
     const [quote, setQuote] = useState("“The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.”");
     const [author, setAuthor] = useState("Ada Lovelace");
     const [iconRotation, setIconRotation] = useState(0);
-    const [city, setCity] = useState("Karlsruhe");
-    const [country, setCountry] = useState("Germany");
-    const [currentWeather, setCurrentWeather] = useState({temp: "", icon: "04d"});
+    const [city, setCity] = useState("Berlin");
+    const [country, setCountry] = useState("Berlin");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,13 +24,6 @@ function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTim
             setAuthor(quoteData.data.author);
             setQuote(quoteData.data.content);
 
-            // location
-            // const locationData = await axios.get("https://ip-api.com/json/");
-            // const city = locationData.data.city;
-            // const country = locationData.data.country;
-            // setCity(city);
-            // setCountry(country);
-
             // axios.get('https://api.ipbase.com/v2/info?apikey=yC9ghNRppFNvWBVR7vDHFazYSpzmP5aY8gCSoaf7')
             // .then(response => {
             //     setCity(response.data.data.location.city.name);
@@ -41,10 +32,6 @@ function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTim
             // .catch(error => {
             //     console.log(error)
             // })
-
-            // current weather
-            // const weatherData = await getFormattedWeatherData({q: `${city}`, units: "metric"});
-            // setCurrentWeather(weatherData);
         }
 
         fetchData();
@@ -84,12 +71,11 @@ function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTim
                 <img className="refresh" style={{"transform":`rotate(${iconRotation}deg)`}} src={RefreshIcon} alt="new quote" onClick={handleQuoteRefresh} ></img>
             </div>
             <div className="bottom-section">
-                <div className="weather-day-time">
+                <div className="wrapper-day-time">
                     <div className="day-time">
                         <img src={theme === "light" ? SunIcon:MoonIcon} alt="daytime icon"></img>
                         <span>{ theme === "light" ? "Good Morning":"Good Evening" }</span>
                     </div>
-                    <WeatherCard time={ `${currentTime.slice(0, 2)}:00` } weatherIcon={ currentWeather.icon } temperature={ Math.floor(currentWeather.temp) }/>
                 </div>
                     <div className="time-data">
                         <div>{ currentTime }</div>
@@ -97,9 +83,6 @@ function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTim
                     </div>
                 <div className="location">
                     in { city }, { country }
-                </div>
-                <div className="weather-cards" >
-
                 </div>
                 <button className="expend" onClick={handleClickMore}>
                     <span>{ expended ? "less":"more"}</span>
