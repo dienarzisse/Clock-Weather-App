@@ -14,9 +14,9 @@ function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTim
     const [quote, setQuote] = useState("“The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.”");
     const [author, setAuthor] = useState("Ada Lovelace");
     const [iconRotation, setIconRotation] = useState(0);
-    const [city, setCity] = useState("Berlin");
-    const [country, setCountry] = useState("Berlin");
-    const [currentWeather, setCurrentWeather] = useState({temp: "", icon: ""});
+    const [city, setCity] = useState("Karlsruhe");
+    const [country, setCountry] = useState("Germany");
+    const [currentWeather, setCurrentWeather] = useState({temp: "", icon: "04d"});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,11 +27,20 @@ function MainPanel({ expended, setExpended, timeData, currentTime, setCurrentTim
             setQuote(quoteData.data.content);
 
             // location
-            const locationData = await axios.get("http://ip-api.com/json/");
-            const city = locationData.data.city;
-            const country = locationData.data.country;
-            setCity(city);
-            setCountry(country);
+            // const locationData = await axios.get("https://ip-api.com/json/");
+            // const city = locationData.data.city;
+            // const country = locationData.data.country;
+            // setCity(city);
+            // setCountry(country);
+
+            // axios.get('https://api.ipbase.com/v2/info?apikey=yC9ghNRppFNvWBVR7vDHFazYSpzmP5aY8gCSoaf7')
+            // .then(response => {
+            //     setCity(response.data.data.location.city.name);
+            //     setCountry(response.data.data.location.country.name);                
+            // })
+            // .catch(error => {
+            //     console.log(error)
+            // })
 
             // current weather
             const weatherData = await getFormattedWeatherData({q: `${city}`, units: "metric"});
